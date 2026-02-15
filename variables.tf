@@ -13,5 +13,5 @@ variable "okta_base_url" {
 variable "okta_api_token" {
   type        = string
   description = "Okta API Token."
-  sensitive   = true # This prevents the token from leaking in TFC logs
+  sensitive   = true 
 }
