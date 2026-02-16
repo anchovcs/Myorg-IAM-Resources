@@ -23,8 +23,8 @@ module "my_saml_app" {
 
   app_type  = "saml"
   app_label = "Production-Reporting-SAML"
-  sso_url   = "[https://apps.company.com/saml/sso](https://apps.company.com/saml/sso)"
-  audience  = "[https://apps.company.com/saml/metadata](https://apps.company.com/saml/metadata)"
+  sso_url   = ["https://x-api.company.com/sso","https://x-api.company.com/sso"]
+  audience  = [https://apps.company.com/saml/metadata","https://apps.company.com/saml/metadata"]
 } -->
 
 2. OIDC Application 
@@ -35,7 +35,12 @@ module "my_saml_app" {
 
   app_type      = "oidc"
   app_label     = "Marketing-Web-Dashboard"
-  redirect_uris = ["[https://marketing.company.com/login/callback](https://marketing.company.com/login/callback)"]
+  redirect_uris = ["https://x-api.company.com/sso","https://x-api.company.com/sso"]
+
+    scopes = [
+    "okta.users.manage",
+    "okta.groups.manage"
+  ]
 } -->
 
 2. If your project need both SAML and OIDC App
@@ -45,7 +50,7 @@ module "my_saml_app" {
   version   = "1.0.0"
   app_type  = "saml"
   app_label = "Project-X-Backend"
-  sso_url   = "[https://x-api.company.com/sso](https://x-api.company.com/sso)"
+  sso_url   = ["https://x-api.company.com/sso","https://x-api.company.com/sso"]
   audience  = "project-x-sp"
 }
 
@@ -54,5 +59,5 @@ module "project_name_oidc" {
   version   = "1.0.0"
   app_type  = "oidc"
   app_label = "Project-X-Frontend"
-  redirect_uris = ["[https://x.company.com/callback](https://x.company.com/callback)"]
+  redirect_uris = ["https://x-api.company.com/sso","https://x-api.company.com/sso"]
 } -->
