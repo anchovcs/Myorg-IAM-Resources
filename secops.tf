@@ -3,5 +3,10 @@ module "project_name_oidc" {
   version   = "1.0.1"
   app_type  = "oidc"
   app_label = "Secops-oidc-app"
-  redirect_uris = ["[https://x.company.com/callback](https://x.company.com/callback)"]
+  
+  # List of multiple URIs (e.g., Production and Staging)
+  redirect_uris = [
+    "https://x.company.com/callback",
+    "https://x-staging.company.com/callback"
+  ]
 }
