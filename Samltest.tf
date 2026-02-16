@@ -5,7 +5,7 @@ data "okta_group" "existing_app_group" {
 
 module "portal_saml_app" {
   source    = "app.terraform.io/AnchoAutomatedSolutions/okta-App/okta"
-  version   = "1.0.5" 
+  version   = "1.0.6" 
 
   app_type  = "saml"
   app_label = "Test-App-SAML"
