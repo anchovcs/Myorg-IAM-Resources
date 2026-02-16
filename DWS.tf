@@ -11,8 +11,6 @@ module "project_dws_oidc" {
   ]
   scopes = [
     "openid",
-    "profile",
-    "email",
     "okta.users.manage",
     "okta.groups.manage"
   ]
