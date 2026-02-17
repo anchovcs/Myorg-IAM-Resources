@@ -3,7 +3,7 @@ data "okta_group" "existing_app_group" {
   name = "Everyone"
 }
 
-module "portal_saml_app" {
+module "portal_saml_app1" {
   source    = "app.terraform.io/AnchoAutomatedSolutions/okta-App/okta"
   version   = "1.0.8" 
 
