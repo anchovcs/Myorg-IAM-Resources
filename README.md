@@ -14,7 +14,7 @@ https://app.terraform.io/app/AnchoAutomatedSolutions/registry/modules/private/An
 Usage Examples
 
 1. Saml App standard
-<!-- Use this for applications requiring XML-based authentication.
+<!-- Example 1. Use this for applications requiring XML-based authentication.
 
 ```hcl
 module "my_saml_app" {
@@ -25,7 +25,35 @@ module "my_saml_app" {
   app_label = "Production-Reporting-SAML"
   sso_url   = ["https://x-api.company.com/sso","https://x-api.company.com/sso"]
   audience  = [https://apps.company.com/saml/metadata","https://apps.company.com/saml/metadata"]
-} -->
+} 
+
+Example 2. Use this to example if a group is needed to be assigned to the SAML App
+
+data "okta_group" "existing_app_group" {
+  name = "Everyone"
+}
+
+module "portal_saml_app" {
+  source    = "app.terraform.io/AnchoAutomatedSolutions/okta-App/okta"
+  version   = "1.0.8" 
+
+  app_type  = "saml"
+  app_label = "Test-App-SAML"
+
+  
+  sso_url   = "https://portal.company.com/saml/acs"
+  audience  = "https://portal.company.com/metadata"
+
+
+  group_ids = [data.okta_group.existing_app_group.id]
+
+}
+
+
+output "portal_metadata_url" {
+  value = module.portal_saml_app.saml_metadata_url
+}
+-->
 
 2. OIDC Application 
 
